@@ -3,11 +3,14 @@ package com.br.view;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
-
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import com.br.model.Sobre;
-
+/**
+ * @author Bruno Gressler da Silveira
+ * @version 1
+ * @since 17/10/2020
+ */
 public class ActivitySobre extends AppCompatActivity implements View.OnClickListener {
 
     Sobre objSobre = new Sobre();
