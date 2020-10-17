@@ -22,4 +22,5 @@
     <string name="button_um">1</string>
     <string name="button_igual">=</string>
     <string name="menu_item_sobre">Sobre</string>
+    <string name="button_zero">0</string>
 </resources>

@@ -5,11 +5,21 @@ import android.widget.EditText;
 
 public class Calculadora {
 
-    private Button buttonUm, buttonDois, buttonTres, buttonQuatro, buttonCinco, buttonSeis,
+    private Button buttonZero, buttonUm, buttonDois, buttonTres, buttonQuatro, buttonCinco, buttonSeis,
             buttonSete, buttonOito, buttonNove;
     private EditText visor;
     private Button buttonRaizQuadrada, buttonRaizCubica, buttonLimpar, buttonPorcento,
             buttonPotencia, buttonIgual, buttonMais, buttonMenos, buttonDivide, buttonVezees;
+    private char op;
+
+
+    public Button getButtonZero() {
+        return buttonZero;
+    }
+
+    public void setButtonZero(Button buttonZero) {
+        this.buttonZero = buttonZero;
+    }
 
     public Button getButtonUm() {
         return buttonUm;
@@ -169,6 +179,18 @@ public class Calculadora {
 
     public void setButtonVezees(Button buttonVezees) {
         this.buttonVezees = buttonVezees;
+    }
+
+    public char getOp() {
+        return op;
+    }
+
+    public void setOp(char op) {
+        this.op = op;
+    }
+
+    public void limpar(){
+        this.visor.setText("");
     }
 }
 

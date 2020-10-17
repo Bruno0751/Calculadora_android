@@ -3,8 +3,6 @@ package com.br.view;
 import android.os.Bundle;
 
 import com.br.model.Calculadora;
-import com.google.android.material.floatingactionbutton.FloatingActionButton;
-import com.google.android.material.snackbar.Snackbar;
 
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
@@ -16,12 +14,17 @@ import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.Toast;
+
+import com.br.controller.Calculos;
+import com.google.android.material.snackbar.Snackbar;
 
 public class Main extends AppCompatActivity implements View.OnClickListener {
 
     private final String TAG ="Main";
     Calculadora objCalculadora = new Calculadora();
+    Calculos objCalculos = new Calculos();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,9 +33,8 @@ public class Main extends AppCompatActivity implements View.OnClickListener {
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-
-
-        //Preparando todos os botoes através do metodo findViewById
+        //Preparando todos as variaveis através do metodo findViewById
+        objCalculadora.setButtonZero((Button)findViewById(R.id.buttonZero));
         objCalculadora.setButtonUm((Button)findViewById(R.id.buttonUm));
         objCalculadora.setButtonDois((Button)findViewById(R.id.buttonDois));
         objCalculadora.setButtonTres((Button)findViewById(R.id.buttonTres));
@@ -52,7 +54,10 @@ public class Main extends AppCompatActivity implements View.OnClickListener {
         objCalculadora.setButtonMenos((Button)findViewById(R.id.buttonMenos));
         objCalculadora.setButtonVezees((Button)findViewById(R.id.buttonVezes));
         objCalculadora.setButtonDivide((Button)findViewById(R.id.buttonDivide));
+        objCalculadora.setVisor((EditText)findViewById(R.id.editTextVisor));
 
+        //Retornando todas as variasveis e preparando-as como botoes
+        objCalculadora.getButtonZero().setOnClickListener(this);
         objCalculadora.getButtonUm().setOnClickListener(this);
         objCalculadora.getButtonDois().setOnClickListener(this);
         objCalculadora.getButtonTres().setOnClickListener(this);
@@ -62,7 +67,6 @@ public class Main extends AppCompatActivity implements View.OnClickListener {
         objCalculadora.getButtonSete().setOnClickListener(this);
         objCalculadora.getButtonOito().setOnClickListener(this);
         objCalculadora.getButtonNove().setOnClickListener(this);
-
         objCalculadora.getButtonRaizQuadrada().setOnClickListener(this);
         objCalculadora.getButtonRaizCubica().setOnClickListener(this);
         objCalculadora.getButtonPorcento().setOnClickListener(this);
@@ -73,14 +77,6 @@ public class Main extends AppCompatActivity implements View.OnClickListener {
         objCalculadora.getButtonMenos().setOnClickListener(this);
         objCalculadora.getButtonVezees().setOnClickListener(this);
         objCalculadora.getButtonDivide().setOnClickListener(this);
-        /*
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
-            }
-         */
     }
 
     protected void onStart() {
@@ -88,10 +84,6 @@ public class Main extends AppCompatActivity implements View.OnClickListener {
         Log.e(TAG, "Ola");
         Toast m = Toast.makeText(Main.this, "Projeto em andamento", Toast.LENGTH_LONG);
         m.show();
-
-        AlertDialog.Builder msg = new AlertDialog.Builder(this);
-        msg.setMessage("Projeto em andamento");
-        msg.show();
     }
 
     @Override
@@ -116,46 +108,148 @@ public class Main extends AppCompatActivity implements View.OnClickListener {
 
     @Override
     public void onClick(View v) {
-        if(v == objCalculadora.getButtonUm()){
+        if (v == objCalculadora.getButtonZero()) {
+
+            objCalculadora.getVisor().setText(objCalculadora.getVisor().getText() + "0");
 
         }else if(v == objCalculadora.getButtonUm()){
 
+            objCalculadora.getVisor().setText(objCalculadora.getVisor().getText() + "1");
+
         }else if(v == objCalculadora.getButtonDois()){
+
+            objCalculadora.getVisor().setText(objCalculadora.getVisor().getText() + "2");
 
         }else if(v == objCalculadora.getButtonTres()){
 
+            objCalculadora.getVisor().setText(objCalculadora.getVisor().getText() + "3");
+
         }else if(v == objCalculadora.getButtonQuatro()){
+
+            objCalculadora.getVisor().setText(objCalculadora.getVisor().getText() + "4");
 
         }else if(v == objCalculadora.getButtonCinco()){
 
+            objCalculadora.getVisor().setText(objCalculadora.getVisor().getText() + "5");
+
         }else if(v == objCalculadora.getButtonSeis()){
+
+            objCalculadora.getVisor().setText(objCalculadora.getVisor().getText() + "6");
 
         }else if(v == objCalculadora.getButtonSete()){
 
+            objCalculadora.getVisor().setText(objCalculadora.getVisor().getText() + "7");
+
         }else if(v == objCalculadora.getButtonOito()){
+
+            objCalculadora.getVisor().setText(objCalculadora.getVisor().getText() + "8");
 
         }else if(v == objCalculadora.getButtonNove()){
 
+            objCalculadora.getVisor().setText(objCalculadora.getVisor().getText() + "9");
+
         }else if(v == objCalculadora.getButtonRaizQuadrada()){
+
+            objCalculadora.setOp('r');
+            objCalculos.setNumero1(Float.parseFloat(objCalculadora.getVisor().getText().toString()));
+            objCalculadora.limpar();
+            objCalculos.setResultadoOutros(Math.sqrt(objCalculos.getNumero1()));
+            objCalculadora.getVisor().setText(String.valueOf(objCalculos.getResultadoOutros()));
 
         }else if(v == objCalculadora.getButtonRaizCubica()){
 
+            objCalculadora.setOp('z');
+            objCalculos.setNumero1(Float.parseFloat(objCalculadora.getVisor().getText().toString()));
+            objCalculadora.limpar();
+            objCalculos.setResultadoOutros(Math.cbrt(objCalculos.getNumero1()));
+            objCalculadora.getVisor().setText(String.valueOf(objCalculos.getResultadoOutros()));
+
         }else if(v == objCalculadora.getButtonPorcento()){
+
+            objCalculadora.setOp('%');
+            objCalculos.setNumero1(Float.parseFloat(objCalculadora.getVisor().getText().toString()));
+            objCalculadora.limpar();
 
         }else if(v == objCalculadora.getButtonLimpar()){
 
+            objCalculadora.limpar();
+
         }else if(v == objCalculadora.getButtonPotencia()){
+
+            objCalculadora.setOp('p');
+            objCalculos.setNumero1(Float.parseFloat(objCalculadora.getVisor().getText().toString()));
+            objCalculadora.limpar();
 
         }else if(v == objCalculadora.getButtonIgual()){
 
+            switch(objCalculadora.getOp()){
+                case '+':
+
+                    objCalculos.setNumero2(Float.parseFloat(objCalculadora.getVisor().getText().toString()));
+                    objCalculos.setResultado(objCalculos.getNumero1() + objCalculos.getNumero2());
+                    objCalculadora.getVisor().setText(String.valueOf(objCalculos.getResultado()));
+
+                    break;
+                case '-':
+
+                    objCalculos.setNumero2(Float.parseFloat(objCalculadora.getVisor().getText().toString()));
+                    objCalculos.setResultado(objCalculos.getNumero1() - objCalculos.getNumero2());
+                    objCalculadora.getVisor().setText(String.valueOf(objCalculos.getResultado()));
+
+                    break;
+                case '*':
+
+                    objCalculos.setNumero2(Float.parseFloat(objCalculadora.getVisor().getText().toString()));
+                    objCalculos.setResultado(objCalculos.getNumero1() * objCalculos.getNumero2());
+                    objCalculadora.getVisor().setText(String.valueOf(objCalculos.getResultado()));
+
+                    break;
+                case '/':
+
+                    objCalculos.setNumero2(Float.parseFloat(objCalculadora.getVisor().getText().toString()));
+                    objCalculos.setResultado(objCalculos.getNumero1() / objCalculos.getNumero2());
+                    objCalculadora.getVisor().setText(String.valueOf(objCalculos.getResultado()));
+
+                    break;
+                case 'p':
+
+                    objCalculos.setNumero2(Float.parseFloat(objCalculadora.getVisor().getText().toString()));
+                    objCalculos.setResultadoOutros(Math.pow(objCalculos.getNumero1(), objCalculos.getNumero2()));
+                    objCalculadora.getVisor().setText(String.valueOf(objCalculos.getResultadoOutros()));
+
+                    break;
+                case '%':
+
+                    objCalculos.setNumero2(Float.parseFloat(objCalculadora.getVisor().getText().toString()));
+                    objCalculos.setResultado(objCalculos.getNumero1() * objCalculos.getNumero2() / 100);
+                    objCalculadora.getVisor().setText(String.valueOf(objCalculos.getResultado()));
+
+                    break;
+            }
+
         }else if(v == objCalculadora.getButtonMais()){
+
+            objCalculadora.setOp('+');
+            objCalculos.setNumero1(Float.parseFloat(objCalculadora.getVisor().getText().toString()));
+            objCalculadora.limpar();
 
         }else if(v == objCalculadora.getButtonMenos()){
 
+            objCalculadora.setOp('-');
+            objCalculos.setNumero1(Float.parseFloat(objCalculadora.getVisor().getText().toString()));
+            objCalculadora.limpar();
+
         }else if(v == objCalculadora.getButtonVezees()) {
+
+            objCalculadora.setOp('*');
+            objCalculos.setNumero1(Float.parseFloat(objCalculadora.getVisor().getText().toString()));
+            objCalculadora.limpar();
 
         }else if(v == objCalculadora.getButtonDivide()){
 
+            objCalculadora.setOp('/');
+            objCalculos.setNumero1(Float.parseFloat(objCalculadora.getVisor().getText().toString()));
+            objCalculadora.limpar();
         }
     }
 }

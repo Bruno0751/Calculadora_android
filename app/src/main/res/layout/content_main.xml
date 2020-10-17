@@ -227,10 +227,20 @@
             app:backgroundTint="@color/teal_700" />
 
         <Button
+            android:id="@+id/buttonZero"
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/dimensao_altura_do_button"
+            android:layout_weight="1"
+            android:textSize="@dimen/tamanho_do_texto_button"
+            android:textStyle="bold"
+            android:text="@string/button_zero"
+            app:backgroundTint="@color/teal_700" />
+
+        <Button
             android:id="@+id/buttonIgual"
             android:layout_width="wrap_content"
             android:layout_height="@dimen/dimensao_altura_do_button"
-            android:layout_weight="7"
+            android:layout_weight="1"
             android:textStyle="bold"
             android:textSize="@dimen/tamanho_do_texto_button"
             android:text="@string/button_igual"
