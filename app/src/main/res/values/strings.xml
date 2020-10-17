@@ -1,0 +1,25 @@
+<resources>
+    <string name="app_name">Calculadora</string>
+    <string name="title_activity_main">Main</string>
+
+    <string name="button_porcentagem">%</string>
+    <string name="button_limpar">C</string>
+    <string name="button_vezes">*</string>
+    <string name="button_somar">+</string>
+    <string name="button_diminuir">-</string>
+    <string name="button_dividir">/</string>
+    <string name="button_raiz_quadrada">√</string>
+    <string name="button_raiz_cubica">∛</string>
+    <string name="button_potencia">x¹</string>
+    <string name="button_nove">9</string>
+    <string name="button_oito">8</string>
+    <string name="button_sete">7</string>
+    <string name="button_seis">6</string>
+    <string name="button_cinco">5</string>
+    <string name="button_quatro">4</string>
+    <string name="button_tres">3</string>
+    <string name="button_dois">2</string>
+    <string name="button_um">1</string>
+    <string name="button_igual">=</string>
+    <string name="menu_item_sobre">Sobre</string>
+</resources>
