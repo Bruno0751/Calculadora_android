@@ -1,10 +1,10 @@
 package com.br.view;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import com.br.model.Calculadora;
 
-import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
@@ -18,9 +18,8 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import com.br.controller.Calculos;
-import com.google.android.material.snackbar.Snackbar;
 
-public class Main extends AppCompatActivity implements View.OnClickListener {
+public class ActivityMain extends AppCompatActivity implements View.OnClickListener {
 
     private final String TAG ="Main";
     Calculadora objCalculadora = new Calculadora();
@@ -82,7 +81,7 @@ public class Main extends AppCompatActivity implements View.OnClickListener {
     protected void onStart() {
         super.onStart();
         Log.e(TAG, "Ola");
-        Toast m = Toast.makeText(Main.this, "Projeto em andamento", Toast.LENGTH_LONG);
+        Toast m = Toast.makeText(ActivityMain.this, "Projeto em andamento", Toast.LENGTH_LONG);
         m.show();
     }
 
@@ -97,11 +96,14 @@ public class Main extends AppCompatActivity implements View.OnClickListener {
         int id = item.getItemId();
         switch(id){
             case R.id.menuItemSobre:
-
+                /*
                 AlertDialog.Builder msg = new AlertDialog.Builder(this);
                 msg.setMessage("Em Breve");
                 msg.show();
                 break;
+                 */
+                Intent intent = new Intent(ActivityMain.this, ActivitySobre.class);
+                startActivity(intent);
         }
         return super.onOptionsItemSelected(item);
     }
