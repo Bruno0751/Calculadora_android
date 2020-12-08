@@ -24,7 +24,7 @@
     <string name="menu_item_sobre">Sobre</string>
     <string name="button_zero">0</string>
     <string name="title_activity_sobre">Sobre</string>
-    <string name="text_view_sobre">Este  Aplicativo tem como ser uma calculadora padrão para uso pessoal</string>
+    <string name="text_view_sobre">Este  Aplicativo Tem Como Objetivo Ser Uma Calculadora Padrão Para Uso Pessoal</string>
     <string name="margin_top">100dp</string>
     <string name="button_voltar">Voltar</string>
 </resources>
